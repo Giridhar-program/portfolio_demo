@@ -245,7 +245,7 @@ This creates a `dist/` folder with optimized files ready for hosting.
    npm run deploy
    ```
 
-4. Your site will be live at: `https://yourusername.github.io/repo-name/`
+4. Your site will be live at: `https://yourusername.github.io/repo-name/` for me: `https://giridhar-program.github.io/portfolio_demo/`
 
 > ⚠️ **Important:** Before deploying, update `vite.config.js` to set the `base` path to your repo name:
 > ```js
