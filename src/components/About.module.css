@@ -1,0 +1,124 @@
+.about {
+  position: relative;
+  padding: var(--space-24) var(--space-6);
+  overflow: hidden;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-12);
+  align-items: center;
+}
+
+.textSide {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.label {
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  background: var(--gradient-accent);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: var(--text-4xl);
+  font-weight: var(--weight-bold);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.description {
+  font-size: var(--text-lg);
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+}
+
+.visualSide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.blob {
+  width: 350px;
+  height: 350px;
+  border-radius: 50% 40% 60% 45% / 55% 50% 45% 50%;
+  background: var(--gradient-accent-subtle);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.blobInner {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: var(--gradient-accent);
+  opacity: 0.15;
+  filter: blur(40px);
+}
+
+.blobRing {
+  position: absolute;
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 191, 255, 0.15);
+}
+
+.blobRingOuter {
+  position: absolute;
+  width: 340px;
+  height: 340px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 0, 110, 0.08);
+}
+
+.divider {
+  max-width: 1100px;
+  margin: var(--space-24) auto 0;
+  height: 1px;
+  background: var(--gradient-accent);
+  opacity: 0.2;
+}
+
+@media (max-width: 768px) {
+  .container {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+  }
+
+  .visualSide {
+    order: -1;
+  }
+
+  .blob {
+    width: 250px;
+    height: 250px;
+  }
+
+  .blobRing {
+    width: 200px;
+    height: 200px;
+  }
+
+  .blobRingOuter {
+    width: 240px;
+    height: 240px;
+  }
+}
