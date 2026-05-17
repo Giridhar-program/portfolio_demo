@@ -47,10 +47,10 @@ npm is the package manager that installs libraries your project needs. It instal
 ### Step 1: Open the project folder in your terminal
 
 ```bash
-cd C:\Users\guppy\OneDrive\Documents\Projects\Antigravity\First_Project
+cd C:\Users\guppy\OneDrive\Documents\Projects\Antigravity\portfolio_demo
 ```
 
-> 💡 **Tip:** If you're using VS Code, just open the `First_Project` folder in VS Code, then press `` Ctrl + ` `` to open the built-in terminal. It will already be in the right folder!
+> 💡 **Tip:** If you're using VS Code, just open the `portfolio_demo` folder in VS Code, then press `` Ctrl + ` `` to open the built-in terminal. It will already be in the right folder!
 
 ### Step 2: Install dependencies
 
