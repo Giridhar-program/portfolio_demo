@@ -28,97 +28,171 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  display: block;
 }
 
 .title {
   font-family: var(--font-display);
   font-size: var(--text-4xl);
-  font-weight: var(--weight-bold);
-  line-height: 1.1;
-  letter-spacing: -0.02em;
+  font-weight: var(--weight-extrabold);
+  line-height: 1.08;
+  letter-spacing: -0.03em;
 }
 
 .description {
   font-size: var(--text-lg);
   color: var(--color-text-secondary);
-  line-height: 1.7;
+  line-height: 1.75;
 }
 
+/* Quick-info chips */
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-top: var(--space-2);
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-full);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  color: var(--color-text-secondary);
+  transition: border-color 0.3s ease, color 0.3s ease, transform 0.3s var(--ease-out);
+  will-change: transform;
+}
+
+.chip:hover {
+  border-color: var(--color-border-hover);
+  color: var(--color-text);
+  transform: translateY(-3px);
+}
+
+/* ─── Visual side — Spatial 3D glass portrait ─── */
 .visualSide {
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
+  perspective: 800px;
 }
 
-.blob {
-  width: 350px;
-  height: 350px;
-  border-radius: 50% 40% 60% 45% / 55% 50% 45% 50%;
-  background: var(--gradient-accent-subtle);
-  border: 1px solid rgba(255, 255, 255, 0.04);
+/* Outer orbit ring */
+.orbitOuter {
   position: relative;
+  width: 340px;
+  height: 340px;
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
 }
 
-.blobInner {
-  width: 180px;
-  height: 180px;
+/* Spinning orbit lines */
+.orbitLine {
+  position: absolute;
+  width: 100%;
+  height: 100%;
   border-radius: 50%;
+  border: 1px solid rgba(245, 158, 11, 0.15);
+  animation: orbit-spin 20s linear infinite;
+  will-change: transform;
+}
+
+.orbitLine:nth-child(2) {
+  width: 88%;
+  height: 88%;
+  border-color: rgba(239, 68, 68, 0.1);
+  animation-duration: 14s;
+  animation-direction: reverse;
+}
+
+@keyframes orbit-spin {
+  from { transform: rotateZ(0deg) rotateX(70deg); }
+  to   { transform: rotateZ(360deg) rotateX(70deg); }
+}
+
+/* Center glass card — portrait */
+.glassPortrait {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  box-shadow:
+    0 0 0 8px rgba(245,158,11,0.05),
+    0 20px 60px rgba(0,0,0,0.5),
+    inset 0 1px 0 rgba(255,255,255,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(245,158,11,0.15), rgba(239,68,68,0.1));
+  color: rgba(255,255,255,0.07);
+  position: relative;
+  animation: portrait-float 7s ease-in-out infinite;
+  will-change: transform;
+  z-index: 2;
+}
+
+.glassPortrait::after {
+  content: 'GG';
+  font-family: var(--font-display);
+  font-size: 3.5rem;
+  font-weight: var(--weight-extrabold);
   background: var(--gradient-accent);
-  opacity: 0.15;
-  filter: blur(40px);
-}
-
-.blobRing {
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   position: absolute;
-  width: 280px;
-  height: 280px;
-  border-radius: 50%;
-  border: 1px solid rgba(0, 191, 255, 0.15);
 }
 
-.blobRingOuter {
+@keyframes portrait-float {
+  0%, 100% { transform: translateY(0)   rotateX(2deg); }
+  50%       { transform: translateY(-14px) rotateX(-2deg); }
+}
+
+/* Floating badge on portrait */
+.portraitBadge {
   position: absolute;
-  width: 340px;
-  height: 340px;
-  border-radius: 50%;
-  border: 1px solid rgba(255, 0, 110, 0.08);
+  bottom: -10px;
+  right: -10px;
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-full);
+  padding: 6px 14px;
+  font-size: var(--text-xs);
+  font-weight: var(--weight-semibold);
+  color: var(--color-amber);
+  box-shadow: var(--shadow-float);
+  white-space: nowrap;
+  z-index: 3;
 }
 
+/* Section divider */
 .divider {
   max-width: 1100px;
   margin: var(--space-24) auto 0;
   height: 1px;
-  background: var(--gradient-accent);
-  opacity: 0.2;
+  background: linear-gradient(90deg, transparent, rgba(245,158,11,0.25), rgba(239,68,68,0.18), transparent);
 }
 
-@media (max-width: 768px) {
+/* Responsive */
+@media (max-width: 900px) {
   .container {
     grid-template-columns: 1fr;
     gap: var(--space-8);
   }
-
-  .visualSide {
-    order: -1;
-  }
-
-  .blob {
-    width: 250px;
-    height: 250px;
-  }
-
-  .blobRing {
-    width: 200px;
-    height: 200px;
-  }
-
-  .blobRingOuter {
-    width: 240px;
-    height: 240px;
-  }
+  .visualSide { order: -1; }
+  .orbitOuter { width: 260px; height: 260px; }
+  .glassPortrait { width: 160px; height: 160px; }
 }

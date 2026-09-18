@@ -5,20 +5,27 @@ import { skills } from '../data/projects';
 import styles from './Skills.module.css';
 
 const CATEGORY_CONFIG = {
-  frontend: { label: 'Frontend', color: '#00BFFF' },
-  aiml: { label: 'AI / Machine Learning', color: '#FF006E' },
-  tools: { label: 'Tools & Workflow', color: '#8B5CF6' },
+  frontend: { label: 'Frontend',             color: '#F59E0B', glyph: '⚛️' },
+  aiml:     { label: 'AI / Machine Learning', color: '#EF4444', glyph: '🧠' },
+  tools:    { label: 'Tools & Workflow',      color: '#8B5CF6', glyph: '🛠️' },
 };
 
 const fadeInUp = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } }
+  hidden:  { opacity: 0, y: 30, filter: 'blur(4px)' },
+  visible: { opacity: 1, y: 0,  filter: 'blur(0px)', transition: { duration: 0.65, ease: [0.16, 1, 0.3, 1] } },
+};
+
+const cardVariants = {
+  hidden:  { opacity: 0, y: 40, scale: 0.95 },
+  visible: { opacity: 1, y: 0,  scale: 1, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } },
 };
 
 export default function Skills() {
   return (
     <section id="skills" className={styles.skills}>
       <div className={styles.container}>
+
+        {/* Header */}
         <motion.div
           className={styles.header}
           initial="hidden"
@@ -26,11 +33,9 @@ export default function Skills() {
           viewport={{ once: true, margin: '-100px' }}
           transition={{ staggerChildren: 0.1 }}
         >
-          <motion.span className={styles.label} variants={fadeInUp}>
-            Tech Stack
-          </motion.span>
+          <motion.span className={styles.label} variants={fadeInUp}>Tech Stack</motion.span>
           <motion.h2 className={styles.title} variants={fadeInUp}>
-            Skills & <span className="text-gradient">Tools</span>
+            Skills &amp; <span className="text-gradient">Tools</span>
           </motion.h2>
         </motion.div>
 
@@ -57,35 +62,43 @@ export default function Skills() {
           ))}
         </div>
 
-        {/* Mobile: Fallback Grid */}
-        <div className={styles.fallbackGrid}>
-          {Object.entries(skills).map(([category, skillList]) => (
-            <motion.div
-              key={category}
-              className={styles.categorySection}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: '-50px' }}
-              transition={{ staggerChildren: 0.05 }}
-            >
-              <div className={styles.categoryTitle}>
-                <span
-                  className={styles.categoryDot}
-                  style={{ background: CATEGORY_CONFIG[category].color }}
-                />
-                {CATEGORY_CONFIG[category].label}
-              </div>
-              <div className={styles.skillCards}>
-                {skillList.map((skill, i) => (
-                  <motion.div key={i} className={styles.skillCard} variants={fadeInUp}>
-                    <span className={styles.skillIcon}>{skill.icon}</span>
-                    {skill.name}
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
-          ))}
-        </div>
+        {/* Glass skill grid — visible always (mobile primary, desktop supplemental) */}
+        <motion.div
+          className={styles.skillGrid}
+          style={{ marginTop: 'var(--space-10)' }}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-50px' }}
+          transition={{ staggerChildren: 0.12 }}
+        >
+          {Object.entries(skills).map(([category, skillList]) => {
+            const cfg = CATEGORY_CONFIG[category];
+            return (
+              <motion.div key={category} className={styles.categoryCard} variants={cardVariants}>
+                <div className={styles.categoryHeader}>
+                  <span
+                    className={styles.categoryDot}
+                    style={{ background: cfg.color, color: cfg.color }}
+                  />
+                  <span className={styles.categoryTitle}>{cfg.label}</span>
+                </div>
+                <div className={styles.skillList}>
+                  {skillList.map((skill, i) => (
+                    <motion.div
+                      key={i}
+                      className={styles.skillItem}
+                      whileHover={{ x: 6, transition: { duration: 0.2 } }}
+                    >
+                      <span className={styles.skillEmoji}>{skill.icon}</span>
+                      <span className={styles.skillName}>{skill.name}</span>
+                    </motion.div>
+                  ))}
+                </div>
+              </motion.div>
+            );
+          })}
+        </motion.div>
+
       </div>
     </section>
   );

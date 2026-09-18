@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { HashRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import Lenis from 'lenis';
-import DynamicIsland from './components/layout/DynamicIsland';
+import FloatingMenu from './components/ui/FloatingMenu';
 import Preloader from './components/layout/Preloader';
 import CustomCursor from './components/ui/CustomCursor';
 import Home from './pages/Home';
@@ -49,7 +49,7 @@ function AppContent() {
         )}
       </AnimatePresence>
 
-      <DynamicIsland />
+      <FloatingMenu />
       <CustomCursor />
       <AnimatedRoutes />
     </>

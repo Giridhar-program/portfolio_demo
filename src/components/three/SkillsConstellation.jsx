@@ -5,8 +5,8 @@ import * as THREE from 'three';
 import { skills } from '../../data/projects';
 
 const CATEGORY_COLORS = {
-  frontend: '#00BFFF',
-  aiml: '#FF006E',
+  frontend: '#F59E0B',
+  aiml: '#EF4444',
   tools: '#8B5CF6',
 };
 
@@ -197,8 +197,8 @@ export default function SkillsConstellation() {
         style={{ background: 'transparent' }}
       >
         <ambientLight intensity={0.2} />
-        <pointLight position={[-5, 3, 5]} intensity={0.5} color="#00BFFF" />
-        <pointLight position={[5, -3, 5]} intensity={0.4} color="#FF006E" />
+        <pointLight position={[-5, 3, 5]} intensity={0.5} color="#F59E0B" />
+        <pointLight position={[5, -3, 5]} intensity={0.4} color="#EF4444" />
         <pointLight position={[0, -5, 3]} intensity={0.3} color="#8B5CF6" />
 
         <ConstellationGroup />
