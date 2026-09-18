@@ -111,8 +111,8 @@ export function LiquidButton({
       <div className={cn(
         "absolute inset-0 z-0 rounded-full border transition-all duration-500",
         isPrimary
-          ? "border-amber-200/50 shadow-[0_0_20px_rgba(245,158,11,0.5),inset_0_0_10px_rgba(255,255,255,0.3)] group-hover:shadow-[0_0_30px_rgba(245,158,11,0.7),inset_0_0_15px_rgba(255,255,255,0.5)]"
-          : "border-amber-500/20 group-hover:border-amber-500/60 shadow-[0_0_15px_rgba(245,158,11,0.05),inset_0_0_10px_rgba(245,158,11,0.05)] group-hover:shadow-[0_0_25px_rgba(245,158,11,0.2),inset_0_0_15px_rgba(245,158,11,0.1)]"
+          ? "border-amber-200/50 shadow-[0_0_20px_rgba(52, 56, 165,0.5),inset_0_0_10px_rgba(255,255,255,0.3)] group-hover:shadow-[0_0_30px_rgba(52, 56, 165,0.7),inset_0_0_15px_rgba(255,255,255,0.5)]"
+          : "border-amber-500/20 group-hover:border-amber-500/60 shadow-[0_0_15px_rgba(52, 56, 165,0.05),inset_0_0_10px_rgba(52, 56, 165,0.05)] group-hover:shadow-[0_0_25px_rgba(52, 56, 165,0.2),inset_0_0_15px_rgba(52, 56, 165,0.1)]"
       )} />
       
       {/* Top reflection highlight */}
@@ -146,7 +146,7 @@ const colorVariants = {
   primary: {
     outer:      "bg-gradient-to-b from-[#000080] to-[#4169E1]",
     inner:      "bg-gradient-to-b from-[#6495ED] via-[#00008B] to-[#87CEEB]",
-    button:     "bg-gradient-to-b from-[#F59E0B] to-[#D97706]",
+    button:     "bg-gradient-to-b from-[#3438A5] to-[#23256e]",
     textColor:  "text-white",
     textShadow: "[text-shadow:_0_-1px_0_rgb(30_58_138_/_100%)]",
   },
@@ -174,7 +174,7 @@ const colorVariants = {
   magenta: {
     outer:      "bg-gradient-to-b from-[#7A0040] to-[#FF5AA0]",
     inner:      "bg-gradient-to-b from-[#FFD6E8] via-[#5A0030] to-[#FFB0D0]",
-    button:     "bg-gradient-to-b from-[#EF4444] to-[#B91C1C]",
+    button:     "bg-gradient-to-b from-[#5C72B5] to-[#3d4b7a]",
     textColor:  "text-white",
     textShadow: "[text-shadow:_0_-1px_0_rgb(120_0_60_/_100%)]",
   },

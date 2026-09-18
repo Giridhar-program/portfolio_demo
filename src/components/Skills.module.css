@@ -10,7 +10,7 @@
   width: 500px;
   height: 500px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(251,146,60,0.06) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(255, 255, 255,0.06) 0%, transparent 70%);
   top: 10%;
   right: -10%;
   pointer-events: none;
@@ -95,7 +95,7 @@
 .categoryCard:hover {
   transform: translateY(-8px) translateZ(0);
   box-shadow: var(--shadow-lg);
-  border-color: rgba(245,158,11,0.3);
+  border-color: rgba(52, 56, 165,0.3);
 }
 
 .categoryHeader {

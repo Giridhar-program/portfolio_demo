@@ -43,24 +43,24 @@
 
 .code {
   font-family: 'Fira Code', 'Cascadia Code', monospace;
-  background: rgba(245, 158, 11, 0.12);
+  background: rgba(52, 56, 165, 0.12);
   color: var(--color-amber);
   padding: 2px 8px;
   border-radius: var(--radius-sm);
   font-size: 0.9em;
-  border: 1px solid rgba(245, 158, 11, 0.2);
+  border: 1px solid rgba(52, 56, 165, 0.2);
 }
 
 /* Terminal window */
 .window {
   background: #120E08;
-  border: 1px solid rgba(245, 158, 11, 0.15);
+  border: 1px solid rgba(52, 56, 165, 0.15);
   border-radius: var(--radius-xl);
   overflow: hidden;
   box-shadow:
-    0 0 0 1px rgba(245, 158, 11, 0.05),
+    0 0 0 1px rgba(52, 56, 165, 0.05),
     0 25px 60px rgba(0, 0, 0, 0.5),
-    0 0 80px rgba(245, 158, 11, 0.04);
+    0 0 80px rgba(52, 56, 165, 0.04);
   cursor: text;
 }
 
@@ -107,7 +107,7 @@
 
 .body::-webkit-scrollbar { width: 4px; }
 .body::-webkit-scrollbar-track { background: transparent; }
-.body::-webkit-scrollbar-thumb { background: rgba(245,158,11,0.2); border-radius: 2px; }
+.body::-webkit-scrollbar-thumb { background: rgba(52, 56, 165,0.2); border-radius: 2px; }
 
 .commandLine {
   display: flex;
@@ -187,14 +187,14 @@
   font-size: var(--text-xs);
   padding: 4px 12px;
   border-radius: var(--radius-full);
-  border: 1px solid rgba(245, 158, 11, 0.2);
-  background: rgba(245, 158, 11, 0.06);
+  border: 1px solid rgba(52, 56, 165, 0.2);
+  background: rgba(52, 56, 165, 0.06);
   color: var(--color-amber);
   cursor: pointer;
   transition: all 0.2s ease;
 }
 
 .chip:hover {
-  background: rgba(245, 158, 11, 0.15);
+  background: rgba(52, 56, 165, 0.15);
   border-color: var(--color-amber);
 }

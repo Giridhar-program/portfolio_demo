@@ -5,8 +5,8 @@ import { skills } from '../data/projects';
 import styles from './Skills.module.css';
 
 const CATEGORY_CONFIG = {
-  frontend: { label: 'Frontend',             color: '#F59E0B', glyph: '⚛️' },
-  aiml:     { label: 'AI / Machine Learning', color: '#EF4444', glyph: '🧠' },
+  frontend: { label: 'Frontend',             color: '#3438A5', glyph: '⚛️' },
+  aiml:     { label: 'AI / Machine Learning', color: '#5C72B5', glyph: '🧠' },
   tools:    { label: 'Tools & Workflow',      color: '#8B5CF6', glyph: '🛠️' },
 };
 

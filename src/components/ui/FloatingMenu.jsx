@@ -176,7 +176,7 @@ export default function FloatingMenu() {
         <motion.div
           className="absolute inset-0"
           animate={{
-            backgroundColor: "#F59E0B",
+            backgroundColor: "#3438A5",
           }}
           transition={{ duration: 0.3, ease }}
           style={{

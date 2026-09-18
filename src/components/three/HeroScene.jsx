@@ -61,28 +61,28 @@ function MouseFollower() {
       <Polyhedron
         position={[-3.5, 1.5, -2]}
         geometry={<icosahedronGeometry args={[1.2, 0]} />}
-        color="#F59E0B"
+        color="#3438A5"
         speed={0.8}
         scale={1}
       />
       <Polyhedron
         position={[3, -1, -3]}
         geometry={<octahedronGeometry args={[1, 0]} />}
-        color="#EF4444"
+        color="#5C72B5"
         speed={1.2}
         scale={0.9}
       />
       <Polyhedron
         position={[-1.5, -2, -1.5]}
         geometry={<dodecahedronGeometry args={[0.7, 0]} />}
-        color="#F59E0B"
+        color="#3438A5"
         speed={0.6}
         scale={0.8}
       />
       <Polyhedron
         position={[2, 2.5, -4]}
         geometry={<tetrahedronGeometry args={[0.9, 0]} />}
-        color="#EF4444"
+        color="#5C72B5"
         speed={1}
         scale={0.7}
       />
@@ -103,7 +103,7 @@ function MouseFollower() {
       <Polyhedron
         position={[4.5, 0.5, -5]}
         geometry={<dodecahedronGeometry args={[1.1, 0]} />}
-        color="#F59E0B"
+        color="#3438A5"
         speed={0.5}
         scale={0.65}
       />
@@ -143,7 +143,7 @@ function Particles() {
       </bufferGeometry>
       <pointsMaterial
         size={0.03}
-        color="#F59E0B"
+        color="#3438A5"
         transparent
         opacity={0.5}
         sizeAttenuation
@@ -170,8 +170,8 @@ export default function HeroScene({ opacity = 1 }) {
         style={{ background: 'transparent' }}
       >
         <ambientLight intensity={0.15} />
-        <directionalLight position={[5, 5, 5]} intensity={0.6} color="#F59E0B" />
-        <directionalLight position={[-5, -3, 3]} intensity={0.4} color="#EF4444" />
+        <directionalLight position={[5, 5, 5]} intensity={0.6} color="#3438A5" />
+        <directionalLight position={[-5, -3, 3]} intensity={0.4} color="#5C72B5" />
         <pointLight position={[0, 0, 4]} intensity={0.3} color="#8B5CF6" />
 
         <MouseFollower />

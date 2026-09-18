@@ -89,8 +89,8 @@
 }
 
 .card:hover {
-  border-color: rgba(245, 158, 11, 0.2);
-  box-shadow: 0 12px 40px rgba(245, 158, 11, 0.08);
+  border-color: rgba(52, 56, 165, 0.2);
+  box-shadow: 0 12px 40px rgba(52, 56, 165, 0.08);
 }
 
 .cardImage {
@@ -199,11 +199,11 @@
 
 .cardLinkLive {
   color: var(--color-amber);
-  border-color: rgba(245, 158, 11, 0.3);
+  border-color: rgba(52, 56, 165, 0.3);
 }
 
 .cardLinkLive:hover {
-  background: rgba(245, 158, 11, 0.1);
+  background: rgba(52, 56, 165, 0.1);
 }
 
 @media (max-width: 768px) {

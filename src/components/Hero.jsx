@@ -13,7 +13,7 @@ const particles = Array.from({ length: PARTICLE_COUNT }, (_, i) => ({
   x:     Math.random() * 100,
   delay: Math.random() * 15,
   dur:   Math.random() * 12 + 10,
-  color: i % 3 === 0 ? '#F59E0B' : i % 3 === 1 ? '#EF4444' : '#FB923C',
+  color: i % 3 === 0 ? '#3438A5' : i % 3 === 1 ? '#5C72B5' : '#FFFFFF',
   opacity: Math.random() * 0.4 + 0.2,
 }));
 

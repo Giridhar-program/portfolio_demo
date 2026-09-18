@@ -116,7 +116,7 @@
 
 .formInput:focus {
   border-color: var(--color-amber);
-  box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.12);
+  box-shadow: 0 0 0 3px rgba(52, 56, 165, 0.12);
 }
 
 .formTextarea {
