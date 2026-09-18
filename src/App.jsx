@@ -21,7 +21,7 @@ function AnimatedRoutes() {
   );
 }
 
-function AppContent() {
+function AppContent({ theme, toggleTheme }) {
   const [loading, setLoading] = useState(true);
 
   /* Initialize Lenis smooth scroll */
@@ -49,7 +49,7 @@ function AppContent() {
         )}
       </AnimatePresence>
 
-      <FloatingMenu />
+      <FloatingMenu theme={theme} toggleTheme={toggleTheme} />
       <CustomCursor />
       <AnimatedRoutes />
     </>
@@ -57,9 +57,19 @@ function AppContent() {
 }
 
 export default function App() {
+  const [theme, setTheme] = useState('day');
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme);
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme(prev => prev === 'day' ? 'night' : 'day');
+  };
+
   return (
     <HashRouter>
-      <AppContent />
+      <AppContent theme={theme} toggleTheme={toggleTheme} />
     </HashRouter>
   );
 }

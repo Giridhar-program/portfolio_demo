@@ -5,8 +5,8 @@ import * as THREE from 'three';
 import { skills } from '../../data/projects';
 
 const CATEGORY_COLORS = {
-  frontend: '#3438A5',
-  aiml: '#5C72B5',
+  frontend: '#3942c6',
+  aiml: '#5978c3',
   tools: '#8B5CF6',
 };
 
@@ -43,6 +43,7 @@ function SkillNode({ position, skill, color, onHover }) {
           color={color}
           emissive={color}
           emissiveIntensity={0.3}
+          blending={THREE.NormalBlending}
           metalness={0.5}
           roughness={0.3}
           transparent
@@ -197,8 +198,8 @@ export default function SkillsConstellation() {
         style={{ background: 'transparent' }}
       >
         <ambientLight intensity={0.2} />
-        <pointLight position={[-5, 3, 5]} intensity={0.5} color="#3438A5" />
-        <pointLight position={[5, -3, 5]} intensity={0.4} color="#5C72B5" />
+        <pointLight position={[-5, 3, 5]} intensity={0.5} color="#3942c6" />
+        <pointLight position={[5, -3, 5]} intensity={0.4} color="#5978c3" />
         <pointLight position={[0, -5, 3]} intensity={0.3} color="#8B5CF6" />
 
         <ConstellationGroup />

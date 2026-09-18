@@ -95,35 +95,37 @@ export function LiquidButton({
       data-slot="button"
       className={cn(
         "relative",
-        liquidbuttonVariants({ variant, size, className })
+        liquidbuttonVariants({ variant, size, className }),
+        isPrimary ? "font-bold hover:scale-[1.02] active:scale-[0.98]" : "hover:scale-[1.02] active:scale-[0.98]"
       )}
+      style={{ color: isPrimary ? "var(--color-text-inverse)" : "var(--color-text)", ...props.style }}
       {...props}
     >
       {/* Base Layer */}
       <div className={cn(
         "absolute inset-0 z-0 rounded-full backdrop-blur-2xl transition-all duration-500",
         isPrimary 
-          ? "bg-amber-500/80 group-hover:bg-amber-400"
-          : "bg-zinc-950/20 group-hover:bg-zinc-950/40"
+          ? "bg-[var(--color-primary)] hover:brightness-110"
+          : "bg-[var(--color-surface-elevated)] hover:bg-[var(--color-surface-hover)]"
       )} />
       
       {/* Border & Glow */}
       <div className={cn(
         "absolute inset-0 z-0 rounded-full border transition-all duration-500",
         isPrimary
-          ? "border-amber-200/50 shadow-[0_0_20px_rgba(52, 56, 165,0.5),inset_0_0_10px_rgba(255,255,255,0.3)] group-hover:shadow-[0_0_30px_rgba(52, 56, 165,0.7),inset_0_0_15px_rgba(255,255,255,0.5)]"
-          : "border-amber-500/20 group-hover:border-amber-500/60 shadow-[0_0_15px_rgba(52, 56, 165,0.05),inset_0_0_10px_rgba(52, 56, 165,0.05)] group-hover:shadow-[0_0_25px_rgba(52, 56, 165,0.2),inset_0_0_15px_rgba(52, 56, 165,0.1)]"
+          ? "border-[var(--color-border)] shadow-[var(--shadow-glow-blue)]"
+          : "border-[var(--color-border)] hover:border-[var(--color-border-hover)] shadow-[var(--shadow-float)]"
       )} />
       
       {/* Top reflection highlight */}
       <div className={cn(
         "absolute inset-0 z-0 rounded-full bg-gradient-to-b from-white/20 to-transparent pointer-events-none transition-all duration-500",
-        isPrimary ? "opacity-60 group-hover:opacity-100" : "opacity-30 group-hover:opacity-50"
+        isPrimary ? "opacity-40 group-hover:opacity-60" : "opacity-10 group-hover:opacity-20"
       )} />
 
       {/* Content */}
       <div className={cn(
-        "relative z-10 flex items-center justify-center drop-shadow-lg",
+        "relative z-10 flex items-center justify-center drop-shadow-sm",
         isPrimary && "drop-shadow-none"
       )}>
         {children}
@@ -146,7 +148,7 @@ const colorVariants = {
   primary: {
     outer:      "bg-gradient-to-b from-[#000080] to-[#4169E1]",
     inner:      "bg-gradient-to-b from-[#6495ED] via-[#00008B] to-[#87CEEB]",
-    button:     "bg-gradient-to-b from-[#3438A5] to-[#23256e]",
+    button:     "bg-gradient-to-b from-[#3942c6] to-[#23256e]",
     textColor:  "text-white",
     textShadow: "[text-shadow:_0_-1px_0_rgb(30_58_138_/_100%)]",
   },
@@ -174,7 +176,7 @@ const colorVariants = {
   magenta: {
     outer:      "bg-gradient-to-b from-[#7A0040] to-[#FF5AA0]",
     inner:      "bg-gradient-to-b from-[#FFD6E8] via-[#5A0030] to-[#FFB0D0]",
-    button:     "bg-gradient-to-b from-[#5C72B5] to-[#3d4b7a]",
+    button:     "bg-gradient-to-b from-[#5978c3] to-[#3d4b7a]",
     textColor:  "text-white",
     textShadow: "[text-shadow:_0_-1px_0_rgb(120_0_60_/_100%)]",
   },

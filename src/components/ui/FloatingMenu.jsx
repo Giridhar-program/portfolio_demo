@@ -45,8 +45,9 @@ function MenuButton({ label, onClick, isOpen, index }) {
       onClick={onClick}
       onMouseEnter={handleEnter}
       onMouseLeave={handleLeave}
-      className="text-[#f7f1ed] text-[22px] uppercase leading-none overflow-hidden bg-transparent border-none cursor-pointer"
+      className="text-[22px] uppercase leading-none overflow-hidden bg-transparent border-none cursor-pointer"
       style={{
+        color: "var(--color-text-inverse)",
         fontFamily: "'Space Grotesk', 'Inter', sans-serif",
         letterSpacing: "0.08em",
         fontWeight: 700,
@@ -90,7 +91,7 @@ function MenuButton({ label, onClick, isOpen, index }) {
   );
 }
 
-export default function FloatingMenu() {
+export default function FloatingMenu({ theme, toggleTheme }) {
   const [isOpen, setIsOpen] = useState(false);
   const containerRef = useRef(null);
   const location = useLocation();
@@ -142,9 +143,9 @@ export default function FloatingMenu() {
   return (
     <motion.div
       ref={containerRef}
-      className="fixed bottom-8 left-1/2 z-[100]"
-      style={{ x: "-50%", pointerEvents: "auto", translateX: "-50%" }}
-      initial={{ opacity: 0, y: 30 }}
+      className="fixed top-8 left-8 z-[100]"
+      style={{ pointerEvents: "auto" }}
+      initial={{ opacity: 0, y: -30 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, ease, delay: 2 }}
     >
@@ -176,20 +177,20 @@ export default function FloatingMenu() {
         <motion.div
           className="absolute inset-0"
           animate={{
-            backgroundColor: "#3438A5",
+            backgroundColor: "var(--color-primary)",
           }}
           transition={{ duration: 0.3, ease }}
           style={{
             borderWidth: 1,
             borderStyle: "solid",
-            borderColor: "#0099CC",
+            borderColor: "var(--color-border-hover)",
             borderRadius: "inherit",
           }}
         />
 
         {/* Dark circle expanding from bottom */}
         <motion.div
-          className="absolute left-1/2 bg-[#0A0A0F]"
+          className="absolute left-1/2 bg-[var(--color-surface-elevated)]"
           style={{
             width: "200%",
             height: "200%",
@@ -225,13 +226,9 @@ export default function FloatingMenu() {
           ))}
         </div>
 
-        {/* Bottom bar: Menu label + hamburger toggle */}
+        {/* Bottom bar: Menu label + Theme Toggle + Hamburger */}
         <motion.div
-          className="relative z-10 flex items-center justify-between w-full shrink-0 cursor-pointer"
-          onClick={(e) => {
-            e.stopPropagation();
-            setIsOpen(!isOpen);
-          }}
+          className="relative z-10 flex items-center justify-between w-full shrink-0"
           animate={{
             paddingLeft: isOpen ? 22 : 18,
             paddingRight: isOpen ? 22 : 18,
@@ -241,22 +238,66 @@ export default function FloatingMenu() {
           transition={{ duration: 0.8, ease }}
           style={{ alignItems: "center" }}
         >
-          <motion.span
-            className="text-[14px] font-semibold leading-none tracking-wider uppercase"
-            animate={{ color: isOpen ? "#f7f1ed" : "#0A0A0F" }}
-            transition={{ duration: 0.3, ease }}
-          >
-            {isProjectPage && !isOpen ? "← Back" : "Menu"}
-          </motion.span>
+          <div className="flex items-center gap-3">
+            <motion.span
+              className="text-[14px] font-semibold leading-none tracking-wider uppercase cursor-pointer"
+              onClick={(e) => {
+                e.stopPropagation();
+                if (isOpen && isProjectPage) {
+                  handleBack();
+                } else {
+                  setIsOpen(!isOpen);
+                }
+              }}
+              style={{ color: "var(--color-text-inverse)" }}
+            >
+              {isProjectPage && !isOpen ? "← Back" : "Menu"}
+            </motion.span>
+            
+            {/* Theme Toggle */}
+            <motion.button
+              onClick={(e) => {
+                e.stopPropagation();
+                if(toggleTheme) toggleTheme();
+              }}
+              className="flex items-center justify-center w-6 h-6 rounded-full cursor-pointer hover:scale-110 active:scale-95 transition-transform"
+              style={{ color: "var(--color-text-inverse)" }}
+              title="Toggle Theme"
+            >
+              {theme === 'day' ? (
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                </svg>
+              ) : (
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="12" cy="12" r="5"></circle>
+                  <line x1="12" y1="1" x2="12" y2="3"></line>
+                  <line x1="12" y1="21" x2="12" y2="23"></line>
+                  <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                  <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                  <line x1="1" y1="12" x2="3" y2="12"></line>
+                  <line x1="21" y1="12" x2="23" y2="12"></line>
+                  <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                  <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                </svg>
+              )}
+            </motion.button>
+          </div>
 
           {/* Animated hamburger → X */}
-          <div className="relative w-[24px] h-[24px] flex items-center justify-center">
+          <div 
+            className="relative w-[24px] h-[24px] flex items-center justify-center cursor-pointer"
+            onClick={(e) => {
+              e.stopPropagation();
+              setIsOpen(!isOpen);
+            }}
+          >
             <motion.span
               className="absolute block w-[18px] h-[2px] rounded-full"
               animate={{
                 rotate: isOpen ? 45 : 0,
                 y: isOpen ? 0 : -3,
-                backgroundColor: isOpen ? "#f7f1ed" : "#0A0A0F",
+                backgroundColor: "var(--color-text-inverse)",
               }}
               transition={{ duration: 0.4, ease }}
             />
@@ -265,7 +306,7 @@ export default function FloatingMenu() {
               animate={{
                 rotate: isOpen ? -45 : 0,
                 y: isOpen ? 0 : 3,
-                backgroundColor: isOpen ? "#f7f1ed" : "#0A0A0F",
+                backgroundColor: "var(--color-text-inverse)",
               }}
               transition={{ duration: 0.4, ease }}
             />

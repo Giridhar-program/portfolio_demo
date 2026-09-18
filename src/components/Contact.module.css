@@ -103,7 +103,7 @@
   padding: var(--space-3) var(--space-4);
   font-family: var(--font-body);
   font-size: var(--text-base);
-  color: var(--color-text);
+  color: #ffffff; /* Always light text because surface is dark in both modes */
   transition: border-color 0.25s ease, box-shadow 0.25s ease;
   outline: none;
   width: 100%;
@@ -111,12 +111,12 @@
 }
 
 .formInput::placeholder {
-  color: var(--color-text-muted);
+  color: rgba(255, 255, 255, 0.5);
 }
 
 .formInput:focus {
   border-color: var(--color-amber);
-  box-shadow: 0 0 0 3px rgba(52, 56, 165, 0.12);
+  box-shadow: 0 0 0 3px rgba(57, 66, 198, 0.12);
 }
 
 .formTextarea {

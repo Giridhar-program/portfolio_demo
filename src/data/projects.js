@@ -138,7 +138,7 @@ export const certifications = [
     issuer: "University Innovation Challenge",
     year: "2024",
     icon: "🏆",
-    color: "#3438A5",
+    color: "#3942c6",
     description: "1st place — Built IoT water-tracking system for campus sustainability.",
     link: "#",
     isAchievement: true,

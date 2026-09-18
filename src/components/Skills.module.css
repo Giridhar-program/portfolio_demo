@@ -10,7 +10,7 @@
   width: 500px;
   height: 500px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(255, 255, 255,0.06) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(57, 66, 198,0.06) 0%, transparent 70%);
   top: 10%;
   right: -10%;
   pointer-events: none;
@@ -95,7 +95,7 @@
 .categoryCard:hover {
   transform: translateY(-8px) translateZ(0);
   box-shadow: var(--shadow-lg);
-  border-color: rgba(52, 56, 165,0.3);
+  border-color: rgba(57, 66, 198,0.3);
 }
 
 .categoryHeader {
@@ -132,14 +132,14 @@
   gap: var(--space-3);
   padding: var(--space-2) var(--space-3);
   border-radius: var(--radius-md);
-  background: rgba(255,255,255,0.02);
-  border: 1px solid rgba(255,255,255,0.03);
+  background: rgba(57, 66, 198,0.02);
+  border: 1px solid rgba(57, 66, 198,0.03);
   transition: background 0.2s ease, transform 0.25s var(--ease-out);
   will-change: transform;
 }
 
 .skillItem:hover {
-  background: rgba(255,255,255,0.05);
+  background: rgba(57, 66, 198,0.05);
   transform: translateX(6px);
 }
 
