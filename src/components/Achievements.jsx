@@ -13,15 +13,17 @@ const scaleIn = {
 };
 
 function AchievementCard({ cert, index }) {
+  const hasLink = cert.link && cert.link !== '#';
   return (
     <motion.a
-      href={cert.link}
-      target="_blank"
-      rel="noopener noreferrer"
+      href={hasLink ? cert.link : undefined}
+      target={hasLink ? "_blank" : undefined}
+      rel={hasLink ? "noopener noreferrer" : undefined}
+      onClick={!hasLink ? (e) => e.preventDefault() : undefined}
       className={`${styles.card} ${cert.isAchievement ? styles.cardAchievement : ''}`}
       variants={scaleIn}
       whileHover={{ y: -5, scale: 1.02, transition: { duration: 0.25 } }}
-      style={{ '--card-color': cert.color }}
+      style={{ '--card-color': cert.color, cursor: hasLink ? 'pointer' : 'default' }}
     >
       {/* Ambient glow */}
       <div className={styles.cardGlow} style={{ background: cert.color + '20' }} />
@@ -31,7 +33,7 @@ function AchievementCard({ cert, index }) {
         <span className={styles.cardIcon}>{cert.icon}</span>
         {cert.isAchievement && (
           <span className={styles.achievementBadge}>
-            🏆 Achievement
+            🏆 Competition / Hack
           </span>
         )}
         <span className={styles.cardYear}>{cert.year}</span>
@@ -41,6 +43,12 @@ function AchievementCard({ cert, index }) {
       <h3 className={styles.cardTitle}>{cert.title}</h3>
       <p className={styles.cardIssuer}>{cert.issuer}</p>
       <p className={styles.cardDesc}>{cert.description}</p>
+
+      {hasLink && (
+        <span className={styles.cardAction}>
+          View Credential ↗
+        </span>
+      )}
 
       {/* Accent bar */}
       <div className={styles.accentBar} style={{ background: cert.color }} />
@@ -112,9 +120,9 @@ export default function Achievements() {
           transition={{ staggerChildren: 0.15 }}
         >
           {[
-            { value: '4+', label: 'Projects Built' },
-            { value: '5+', label: 'Certifications' },
-            { value: '1st', label: 'Hackathon Win' },
+            { value: '5+', label: 'Projects Built' },
+            { value: '9+', label: 'Certifications & Visits' },
+            { value: '3', label: 'Competitions & Hacks' },
             { value: '∞', label: 'Curiosity' },
           ].map(stat => (
             <motion.div key={stat.label} className={styles.statItem} variants={fadeInUp}>

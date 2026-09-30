@@ -47,11 +47,12 @@ function MenuButton({ label, onClick, isOpen, index }) {
       onMouseLeave={handleLeave}
       className="text-[22px] uppercase leading-none overflow-hidden bg-transparent border-none cursor-pointer"
       style={{
-        color: "var(--color-text-inverse)",
+        color: hovered ? "var(--color-primary)" : "#F8FAFC",
         fontFamily: "'Space Grotesk', 'Inter', sans-serif",
         letterSpacing: "0.08em",
         fontWeight: 700,
         height: "1em",
+        transition: "color 0.25s ease",
       }}
       animate={{ opacity: isOpen ? 1 : 0 }}
       transition={{
@@ -98,6 +99,7 @@ export default function FloatingMenu({ theme, toggleTheme }) {
   const navigate = useNavigate();
 
   const isProjectPage = location.pathname.startsWith("/project/");
+  const textColor = isOpen ? "#F8FAFC" : (theme === 'night' ? "#0A0A0F" : "#ffffff");
 
   /* Close on outside click */
   useEffect(() => {
@@ -190,7 +192,7 @@ export default function FloatingMenu({ theme, toggleTheme }) {
 
         {/* Dark circle expanding from bottom */}
         <motion.div
-          className="absolute left-1/2 bg-[var(--color-surface-elevated)]"
+          className="absolute left-1/2 bg-[var(--menu-expanded-bg)]"
           style={{
             width: "200%",
             height: "200%",
@@ -249,7 +251,7 @@ export default function FloatingMenu({ theme, toggleTheme }) {
                   setIsOpen(!isOpen);
                 }
               }}
-              style={{ color: "var(--color-text-inverse)" }}
+              style={{ color: textColor }}
             >
               {isProjectPage && !isOpen ? "← Back" : "Menu"}
             </motion.span>
@@ -261,7 +263,7 @@ export default function FloatingMenu({ theme, toggleTheme }) {
                 if(toggleTheme) toggleTheme();
               }}
               className="flex items-center justify-center w-6 h-6 rounded-full cursor-pointer hover:scale-110 active:scale-95 transition-transform"
-              style={{ color: "var(--color-text-inverse)" }}
+              style={{ color: textColor }}
               title="Toggle Theme"
             >
               {theme === 'day' ? (
@@ -297,7 +299,7 @@ export default function FloatingMenu({ theme, toggleTheme }) {
               animate={{
                 rotate: isOpen ? 45 : 0,
                 y: isOpen ? 0 : -3,
-                backgroundColor: "var(--color-text-inverse)",
+                backgroundColor: textColor,
               }}
               transition={{ duration: 0.4, ease }}
             />
@@ -306,7 +308,7 @@ export default function FloatingMenu({ theme, toggleTheme }) {
               animate={{
                 rotate: isOpen ? -45 : 0,
                 y: isOpen ? 0 : 3,
-                backgroundColor: "var(--color-text-inverse)",
+                backgroundColor: textColor,
               }}
               transition={{ duration: 0.4, ease }}
             />

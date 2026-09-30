@@ -75,6 +75,8 @@
   border: 1px solid var(--color-border);
   border-radius: var(--radius-xl);
   padding: var(--space-8);
+  box-shadow: var(--shadow-md);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .form {
@@ -92,7 +94,7 @@
 .formLabel {
   font-size: var(--text-sm);
   font-weight: var(--weight-semibold);
-  color: var(--color-text-secondary);
+  color: var(--color-text);
   letter-spacing: 0.03em;
 }
 
@@ -103,20 +105,22 @@
   padding: var(--space-3) var(--space-4);
   font-family: var(--font-body);
   font-size: var(--text-base);
-  color: #ffffff; /* Always light text because surface is dark in both modes */
-  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+  color: var(--color-text);
+  transition: border-color 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
   outline: none;
   width: 100%;
   box-sizing: border-box;
 }
 
 .formInput::placeholder {
-  color: rgba(255, 255, 255, 0.5);
+  color: var(--color-text-muted);
+  opacity: 0.75;
 }
 
 .formInput:focus {
-  border-color: var(--color-amber);
-  box-shadow: 0 0 0 3px rgba(57, 66, 198, 0.12);
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px var(--color-blue-glow);
+  background: var(--color-surface);
 }
 
 .formTextarea {
@@ -150,7 +154,7 @@
   align-items: center;
   justify-content: center;
   font-size: 1.5rem;
-  color: #4ADE80;
+  color: #16a34a;
   font-weight: bold;
   display: grid;
   place-items: center;
@@ -160,6 +164,7 @@
   font-family: var(--font-display);
   font-size: var(--text-xl);
   font-weight: var(--weight-semibold);
+  color: var(--color-text);
 }
 
 .successMsg p {
@@ -170,7 +175,7 @@
 .resetBtn {
   margin-top: var(--space-2);
   font-size: var(--text-sm);
-  color: var(--color-amber);
+  color: var(--color-primary);
   background: none;
   border: none;
   cursor: pointer;
@@ -186,11 +191,13 @@
   display: flex;
   flex-direction: column;
   gap: var(--space-4);
+  box-shadow: var(--shadow-md);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .infoTitle {
   font-size: var(--text-xs);
-  font-weight: var(--weight-semibold);
+  font-weight: var(--weight-bold);
   text-transform: uppercase;
   letter-spacing: 0.12em;
   color: var(--color-text-muted);
@@ -205,8 +212,8 @@
 .email {
   font-family: var(--font-display);
   font-size: var(--text-sm);
-  font-weight: var(--weight-medium);
-  color: var(--color-text);
+  font-weight: var(--weight-semibold);
+  color: var(--color-primary);
   word-break: break-all;
 }
 
@@ -217,14 +224,22 @@
   border: 1px solid var(--color-border);
   border-radius: var(--radius-full);
   font-size: var(--text-xs);
-  font-weight: var(--weight-medium);
-  color: var(--color-text-secondary);
+  font-weight: var(--weight-semibold);
+  color: var(--color-primary);
   cursor: pointer;
-  transition: border-color 0.2s ease, color 0.2s ease;
+  transition: all 0.2s ease;
 }
 
-.copyBtn:hover { border-color: var(--color-amber); color: var(--color-amber); }
-.copied        { color: #4ADE80 !important; border-color: #4ADE80 !important; }
+.copyBtn:hover { 
+  border-color: var(--color-primary); 
+  background: var(--color-surface-hover);
+  color: var(--color-primary); 
+}
+.copied { 
+  color: #16a34a !important; 
+  border-color: #16a34a !important; 
+  background: rgba(22, 163, 74, 0.1) !important;
+}
 
 .divider {
   width: 100%;
@@ -248,12 +263,16 @@
   border: 1px solid var(--color-border);
   font-size: var(--text-sm);
   font-weight: var(--weight-medium);
-  color: var(--color-text-secondary);
+  color: var(--color-text);
   text-decoration: none;
-  transition: border-color 0.2s ease, color 0.2s ease;
+  transition: all 0.2s ease;
 }
 
-.socialLink:hover { border-color: var(--color-amber); color: var(--color-text); }
+.socialLink:hover { 
+  border-color: var(--color-primary); 
+  background: var(--color-surface-hover);
+  color: var(--color-primary); 
+}
 
 .responseTime {
   font-size: var(--text-sm);
@@ -262,7 +281,8 @@
 }
 
 .responseTime strong {
-  color: var(--color-amber);
+  color: var(--color-primary);
+  font-weight: var(--weight-semibold);
 }
 
 /* Footer */

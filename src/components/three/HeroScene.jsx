@@ -14,7 +14,7 @@ function Polyhedron({ position, geometry, color, speed = 1, scale = 1 }) {
       meshRef.current.rotation.z += 0.001 * speed;
     }
     if (materialRef.current) {
-      materialRef.current.emissiveIntensity = 0.3 + Math.sin(state.clock.elapsedTime * 0.5 + position[0]) * 0.15;
+      materialRef.current.emissiveIntensity = 0.25 + Math.sin(state.clock.elapsedTime * 0.5 + position[0]) * 0.12;
     }
   });
 
@@ -26,8 +26,8 @@ function Polyhedron({ position, geometry, color, speed = 1, scale = 1 }) {
           ref={materialRef}
           color={color}
           emissive={color}
-          emissiveIntensity={0.3}
-          metalness={0.7}
+          emissiveIntensity={0.25}
+          metalness={0.4}
           roughness={0.2}
           transparent
           opacity={0.85}
@@ -58,50 +58,51 @@ function MouseFollower() {
 
   return (
     <group ref={groupRef}>
+      {/* Outer framing shapes that do not occlude center text or buttons */}
       <Polyhedron
-        position={[-3.5, 1.5, -2]}
-        geometry={<icosahedronGeometry args={[1.2, 0]} />}
+        position={[-3.8, 1.4, -2.5]}
+        geometry={<icosahedronGeometry args={[1.1, 0]} />}
         color="#3942c6"
         speed={0.8}
-        scale={1}
-      />
-      <Polyhedron
-        position={[3, -1, -3]}
-        geometry={<octahedronGeometry args={[1, 0]} />}
-        color="#5978c3"
-        speed={1.2}
         scale={0.9}
       />
       <Polyhedron
-        position={[-1.5, -2, -1.5]}
+        position={[3.6, -1.2, -2.8]}
+        geometry={<octahedronGeometry args={[1, 0]} />}
+        color="#5978c3"
+        speed={1.1}
+        scale={0.85}
+      />
+      <Polyhedron
+        position={[-3.0, -2.3, -2.5]}
         geometry={<dodecahedronGeometry args={[0.7, 0]} />}
         color="#3942c6"
         speed={0.6}
-        scale={0.8}
+        scale={0.75}
       />
       <Polyhedron
-        position={[2, 2.5, -4]}
+        position={[2.8, 2.3, -3.5]}
         geometry={<tetrahedronGeometry args={[0.9, 0]} />}
         color="#5978c3"
         speed={1}
         scale={0.7}
       />
       <Polyhedron
-        position={[0.5, -0.5, -2.5]}
+        position={[-2.0, 2.5, -3.0]}
         geometry={<icosahedronGeometry args={[0.5, 0]} />}
         color="#8B5CF6"
-        speed={1.4}
+        speed={1.3}
         scale={0.6}
       />
       <Polyhedron
-        position={[-4, -1.5, -3.5]}
+        position={[-4.5, -1.0, -3.5]}
         geometry={<octahedronGeometry args={[0.6, 0]} />}
         color="#8B5CF6"
         speed={0.9}
         scale={0.5}
       />
       <Polyhedron
-        position={[4.5, 0.5, -5]}
+        position={[4.8, 0.6, -4.5]}
         geometry={<dodecahedronGeometry args={[1.1, 0]} />}
         color="#3942c6"
         speed={0.5}
@@ -112,7 +113,7 @@ function MouseFollower() {
 }
 
 function Particles() {
-  const count = 80;
+  const count = 100;
   const positions = useMemo(() => {
     const pos = new Float32Array(count * 3);
     for (let i = 0; i < count; i++) {
@@ -142,10 +143,10 @@ function Particles() {
         />
       </bufferGeometry>
       <pointsMaterial
-        size={0.03}
+        size={0.055}
         color="#3942c6"
         transparent
-        opacity={0.5}
+        opacity={0.7}
         sizeAttenuation
       />
     </points>
@@ -169,10 +170,10 @@ export default function HeroScene({ opacity = 1 }) {
         gl={{ antialias: true, alpha: true }}
         style={{ background: 'transparent' }}
       >
-        <ambientLight intensity={0.15} />
-        <directionalLight position={[5, 5, 5]} intensity={0.6} color="#3942c6" />
-        <directionalLight position={[-5, -3, 3]} intensity={0.4} color="#5978c3" />
-        <pointLight position={[0, 0, 4]} intensity={0.3} color="#8B5CF6" />
+        <ambientLight intensity={0.65} />
+        <directionalLight position={[6, 6, 5]} intensity={1.1} color="#ffffff" />
+        <directionalLight position={[-6, -4, 4]} intensity={0.75} color="#7b9ff8" />
+        <pointLight position={[0, 2, 4]} intensity={0.6} color="#8B5CF6" />
 
         <MouseFollower />
         <Particles />

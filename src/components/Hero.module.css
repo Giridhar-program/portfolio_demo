@@ -6,7 +6,7 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  background: var(--color-bg);
+  background: var(--hero-bg, var(--color-bg));
   /* Perspective for 3D children */
   perspective: 1200px;
 }
@@ -14,13 +14,13 @@
 /* ─── Ambient orbs ─── */
 .orbBlue {
   position: absolute;
-  width: 700px;
-  height: 700px;
+  width: 750px;
+  height: 750px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(57, 66, 198,0.2) 0%, transparent 65%);
+  background: radial-gradient(circle, var(--color-blue-glow-orb, rgba(57, 66, 198, 0.22)) 0%, transparent 68%);
   top: -15%;
   left: -10%;
-  filter: blur(10px);
+  filter: blur(80px);
   pointer-events: none;
   animation: orb-drift-a 18s ease-in-out infinite alternate;
   will-change: transform;
@@ -28,13 +28,13 @@
 
 .orbMagenta {
   position: absolute;
-  width: 600px;
-  height: 600px;
+  width: 650px;
+  height: 650px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(89, 120, 195,0.16) 0%, transparent 65%);
+  background: radial-gradient(circle, var(--color-magenta-glow-orb, rgba(89, 120, 195, 0.22)) 0%, transparent 68%);
   bottom: -15%;
   right: -8%;
-  filter: blur(10px);
+  filter: blur(80px);
   pointer-events: none;
   animation: orb-drift-b 22s ease-in-out infinite alternate;
   will-change: transform;
@@ -42,13 +42,13 @@
 
 .orbViolet {
   position: absolute;
-  width: 400px;
-  height: 400px;
+  width: 500px;
+  height: 500px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(57, 66, 198,0.12) 0%, transparent 65%);
-  top: 40%;
-  left: 55%;
-  filter: blur(20px);
+  background: radial-gradient(circle, var(--color-violet-glow-orb, rgba(139, 92, 246, 0.18)) 0%, transparent 68%);
+  top: 35%;
+  left: 50%;
+  filter: blur(70px);
   pointer-events: none;
   animation: orb-drift-c 25s ease-in-out infinite alternate;
   will-change: transform;
@@ -73,6 +73,7 @@
   inset: 0;
   pointer-events: none;
   overflow: hidden;
+  z-index: 1;
 }
 
 .particle {
@@ -85,10 +86,10 @@
 }
 
 @keyframes particle-float {
-  0%   { opacity: 0;   transform: translateY(0) scale(0.5); }
-  10%  { opacity: 0.6; }
-  90%  { opacity: 0.4; }
-  100% { opacity: 0;   transform: translateY(-120vh) scale(1.2); }
+  0%   { opacity: 0;    transform: translateY(0) scale(0.6); }
+  15%  { opacity: 0.85; }
+  85%  { opacity: 0.7; }
+  100% { opacity: 0;    transform: translateY(-120vh) scale(1.2); }
 }
 
 /* ─── Main content ─── */
@@ -104,38 +105,6 @@
   gap: var(--space-6);
 }
 
-/* Status badge */
-.badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 6px 16px;
-  background: var(--glass-bg);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid var(--glass-border);
-  border-radius: var(--radius-full);
-  font-size: var(--text-xs);
-  font-weight: var(--weight-medium);
-  color: var(--color-text-secondary);
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-}
-
-.badgeDot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: #4ADE80;
-  box-shadow: 0 0 8px #4ADE80;
-  animation: pulse-dot 2s ease-in-out infinite;
-}
-
-@keyframes pulse-dot {
-  0%, 100% { box-shadow: 0 0 6px #4ADE80; }
-  50%       { box-shadow: 0 0 14px #4ADE80, 0 0 24px rgba(74,222,128,0.4); }
-}
-
 /* Name */
 .name {
   font-family: var(--font-display);
@@ -143,14 +112,7 @@
   font-weight: var(--weight-extrabold);
   line-height: 1.02;
   letter-spacing: -0.04em;
-  /* Subtle shimmer */
-  background: linear-gradient(
-    135deg,
-    #F2F2FA 0%,
-    rgba(242,242,250,0.75) 40%,
-    #F2F2FA 60%,
-    rgba(242,242,250,0.85) 100%
-  );
+  background: var(--hero-name-gradient);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -174,21 +136,38 @@
 
 .tagline {
   font-size: var(--text-xl);
-  font-weight: var(--weight-light);
+  font-weight: var(--weight-medium);
   color: var(--color-text-secondary);
-  letter-spacing: 0.06em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  max-width: 520px;
+  max-width: 540px;
+  line-height: 1.45;
 }
 
 /* CTA row */
 .ctaRow {
   display: flex;
   align-items: center;
-  gap: var(--space-4);
+  gap: var(--space-5);
   flex-wrap: wrap;
   justify-content: center;
-  margin-top: var(--space-2);
+  margin-top: var(--space-6);
+  margin-bottom: var(--space-2);
+  position: relative;
+  z-index: 10;
+}
+
+.ctaBtn {
+  min-width: 175px;
+  height: 52px;
+  padding: 0 1.75rem;
+  font-size: 0.95rem;
+  font-weight: var(--weight-semibold);
+  letter-spacing: 0.02em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
 /* Floating glass card beneath hero name */

@@ -14,24 +14,24 @@
   /* Colors — Light Editorial Base */
   --color-bg:               #fdfefc;
   --color-bg-alt:           #f5f6f8;
-  --color-surface:          rgba(57, 66, 198,0.7);
-  --color-surface-elevated: rgba(57, 66, 198,0.85);
-  --color-surface-hover:    rgba(57, 66, 198,1);
-  --color-border:           rgba(57, 66, 198, 0.1);
+  --color-surface:          #ffffff;
+  --color-surface-elevated: #f8fafc;
+  --color-surface-hover:    #f1f5f9;
+  --color-border:           rgba(57, 66, 198, 0.12);
   --color-border-hover:     rgba(57, 66, 198, 0.35);
 
   /* Accent Colors — Cobalt & Slate Blue */
   --color-primary:          #3942c6;  /* Cobalt Blue */
   --color-secondary:        #5978c3;  /* Slate Blue */
-  --color-accent:           #594245;  /* Cocoa Brown */
+  --color-accent:           #4338ca;  /* Indigo Accent */
   
   --color-blue:             var(--color-primary);
   --color-magenta:          var(--color-secondary);
   --color-violet:           var(--color-accent);
   
-  --color-blue-glow:        rgba(57, 66, 198, 0.2);
-  --color-magenta-glow:     rgba(89, 120, 195, 0.2);
-  --color-violet-glow:      rgba(89, 66, 69, 0.2);
+  --color-blue-glow:        rgba(57, 66, 198, 0.15);
+  --color-magenta-glow:     rgba(89, 120, 195, 0.15);
+  --color-violet-glow:      rgba(67, 56, 202, 0.15);
 
   /* Semantic aliases */
   --color-amber:            var(--color-primary); 
@@ -39,24 +39,59 @@
   --color-orange:           var(--color-accent);
 
   /* Glass */
-  --glass-bg:               rgba(253, 254, 252, 0.7);
-  --glass-border:           rgba(57, 66, 198, 0.15);
+  --glass-bg:               rgba(255, 255, 255, 0.88);
+  --glass-border:           rgba(57, 66, 198, 0.12);
   --glass-blur:             16px;
 
-  /* Text — Blue tint */
-  --color-text:             #3942c6;
-  --color-text-secondary:   #594245;
-  --color-text-muted:       #555a80;
+  /* Typography / Text Colors */
+  --color-text:             #0f172a;  /* Slate 900 for headings & crisp content */
+  --color-text-secondary:   #475569;  /* Slate 600 for descriptions & subtexts */
+  --color-text-muted:       #64748b;  /* Slate 500 for captions & subtle labels */
   
-  --color-text-inverse:     #fdfefc;
-  --color-text-on-surface:  #ffffff;
+  --color-text-inverse:     #ffffff;
+  --color-text-on-surface:  #0f172a;
+
+  /* Button specific tokens */
+  --color-primary-foreground:  #ffffff;
+  --color-btn-secondary-bg:    #ffffff;
+  --color-btn-secondary-hover: rgba(57, 66, 198, 0.06);
+  --color-btn-secondary-border:rgba(57, 66, 198, 0.22);
+  --color-btn-secondary-text:  #3942c6;
+
+  /* Floating Menu */
+  --menu-expanded-bg:          #16193d;
+
+  /* Hero & Ambience */
+  --hero-bg:                 radial-gradient(ellipse 120% 90% at 50% -15%, #edf3fc 0%, #f4f7fc 40%, #f9fafd 80%, #ffffff 100%);
+  --hero-name-gradient:      linear-gradient(135deg, #111438 0%, #2a3268 40%, #16193d 70%, #3942c6 100%);
+  --color-blue-glow-orb:     rgba(57, 66, 198, 0.22);
+  --color-magenta-glow-orb:  rgba(89, 120, 195, 0.22);
+  --color-violet-glow-orb:   rgba(139, 92, 246, 0.18);
+
+  /* Terminal theme - Light Mode (Clean, soft, glare-free, high-contrast) */
+  --terminal-window-bg:       #ffffff;
+  --terminal-titlebar-bg:     #edf2f9;
+  --terminal-body-bg:         #f8fafc;
+  --terminal-border:          rgba(57, 66, 198, 0.15);
+  --terminal-border-inner:    rgba(57, 66, 198, 0.08);
+  --terminal-text-command:    #0f172a;
+  --terminal-text-output:     #334155;
+  --terminal-text-muted:      #64748b;
+  --terminal-prompt:          #3942c6;
+  --terminal-cursor:          #3942c6;
+  --terminal-chips-bg:        #edf2f9;
+  --terminal-chip-bg:         #ffffff;
+  --terminal-chip-border:     rgba(57, 66, 198, 0.2);
+  --terminal-chip-text:       #3942c6;
+  --terminal-chip-hover-bg:   rgba(57, 66, 198, 0.08);
+  --terminal-shadow:          0 12px 40px -10px rgba(57, 66, 198, 0.1), 0 4px 16px -2px rgba(0, 0, 0, 0.04);
 
   /* Gradients */
   --gradient-accent:         linear-gradient(135deg, var(--color-primary), var(--color-secondary));
   --gradient-accent-alt:     linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 50%, var(--color-secondary) 100%);
   --gradient-accent-subtle:  linear-gradient(135deg, rgba(57,66,198,0.1), rgba(89,120,195,0.1));
   --gradient-glow:           radial-gradient(ellipse at center, rgba(57,66,198,0.1) 0%, rgba(89,120,195,0.05) 50%, transparent 80%);
-  --gradient-surface:        linear-gradient(145deg, rgba(57, 66, 198,0.8), rgba(57, 66, 198,0.4));
+  --gradient-surface:        linear-gradient(145deg, rgba(255, 255, 255, 0.98), rgba(248, 250, 252, 0.9));
 
   /* Typography */
   --font-display: 'Syne', 'Space Grotesk', system-ui, sans-serif;
@@ -169,6 +204,41 @@
   
   --color-text-inverse:     #0A0A0F;
   --color-text-on-surface:  #ffffff;
+
+  /* Button specific tokens */
+  --color-primary-foreground:  #0A0A0F;
+  --color-btn-secondary-bg:    rgba(255, 255, 255, 0.06);
+  --color-btn-secondary-hover: rgba(255, 255, 255, 0.12);
+  --color-btn-secondary-border:rgba(255, 255, 255, 0.15);
+  --color-btn-secondary-text:  #F8FAFC;
+
+  /* Floating Menu */
+  --menu-expanded-bg:          #0d0f18;
+
+  /* Hero & Ambience */
+  --hero-bg:                 radial-gradient(ellipse 120% 90% at 50% -15%, #141424 0%, #0c0c14 45%, #07070b 100%);
+  --hero-name-gradient:      linear-gradient(135deg, #F2F2FA 0%, rgba(242, 242, 250, 0.85) 40%, #FFFFFF 60%, rgba(242, 242, 250, 0.95) 100%);
+  --color-blue-glow-orb:     rgba(245, 158, 11, 0.2);
+  --color-magenta-glow-orb:  rgba(239, 68, 68, 0.18);
+  --color-violet-glow-orb:   rgba(251, 146, 60, 0.15);
+
+  /* Terminal theme - Dark Mode (Deep cosmic slate) */
+  --terminal-window-bg:       #0d0f18;
+  --terminal-titlebar-bg:     #161928;
+  --terminal-body-bg:         #0d0f18;
+  --terminal-border:          rgba(255, 255, 255, 0.08);
+  --terminal-border-inner:    rgba(255, 255, 255, 0.06);
+  --terminal-text-command:    #f8fafc;
+  --terminal-text-output:     #cbd5e1;
+  --terminal-text-muted:      #94a3b8;
+  --terminal-prompt:          #f59e0b;
+  --terminal-cursor:          #f59e0b;
+  --terminal-chips-bg:        #131622;
+  --terminal-chip-bg:         rgba(255, 255, 255, 0.05);
+  --terminal-chip-border:     rgba(255, 255, 255, 0.1);
+  --terminal-chip-text:       #f59e0b;
+  --terminal-chip-hover-bg:   rgba(245, 158, 11, 0.15);
+  --terminal-shadow:          0 0 0 1px rgba(255, 255, 255, 0.05), 0 25px 60px rgba(0, 0, 0, 0.6), 0 0 80px rgba(245, 158, 11, 0.04);
 
   /* Gradients */
   --gradient-accent:         linear-gradient(135deg, var(--color-primary), var(--color-secondary));

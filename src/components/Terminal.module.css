@@ -43,8 +43,8 @@
 
 .code {
   font-family: 'Fira Code', 'Cascadia Code', monospace;
-  background: rgba(57, 66, 198, 0.12);
-  color: var(--color-amber);
+  background: rgba(57, 66, 198, 0.1);
+  color: var(--color-primary);
   padding: 2px 8px;
   border-radius: var(--radius-sm);
   font-size: 0.9em;
@@ -53,15 +53,13 @@
 
 /* Terminal window */
 .window {
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
+  background: var(--terminal-window-bg);
+  border: 1px solid var(--terminal-border);
   border-radius: var(--radius-xl);
   overflow: hidden;
-  box-shadow:
-    0 0 0 1px rgba(57, 66, 198, 0.05),
-    0 25px 60px rgba(0, 0, 0, 0.5),
-    0 0 80px rgba(57, 66, 198, 0.04);
+  box-shadow: var(--terminal-shadow);
   cursor: text;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 /* Title bar */
@@ -69,9 +67,9 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 12px 16px;
-  background: var(--color-bg-alt);
-  border-bottom: 1px solid var(--color-border);
+  padding: 12px 18px;
+  background: var(--terminal-titlebar-bg);
+  border-bottom: 1px solid var(--terminal-border-inner);
 }
 
 .dots {
@@ -86,40 +84,43 @@
 
 .windowTitle {
   font-family: 'Fira Code', 'Cascadia Code', monospace;
-  font-size: 0.75rem;
-  color: var(--color-text-muted);
+  font-size: 0.78rem;
+  color: var(--terminal-text-muted);
   letter-spacing: 0.04em;
+  font-weight: var(--weight-medium);
 }
 
 /* Body / output area */
 .body {
-  padding: var(--space-5) var(--space-5) var(--space-4);
+  padding: var(--space-5) var(--space-6) var(--space-5);
   min-height: 320px;
-  max-height: 400px;
+  max-height: 420px;
   overflow-y: auto;
   font-family: 'Fira Code', 'Cascadia Code', 'Courier New', monospace;
-  font-size: 0.82rem;
-  line-height: 1.7;
-  color: var(--color-text-secondary);
+  font-size: 0.85rem;
+  line-height: 1.75;
+  background: var(--terminal-body-bg);
+  color: var(--terminal-text-output);
   scrollbar-width: thin;
-  scrollbar-color: var(--color-border-hover) transparent;
+  scrollbar-color: var(--terminal-chip-border) transparent;
 }
 
-.body::-webkit-scrollbar { width: 4px; }
+.body::-webkit-scrollbar { width: 5px; }
 .body::-webkit-scrollbar-track { background: transparent; }
-.body::-webkit-scrollbar-thumb { background: rgba(57, 66, 198,0.2); border-radius: 2px; }
+.body::-webkit-scrollbar-thumb { background: var(--terminal-chip-border); border-radius: 3px; }
 
 .commandLine {
   display: flex;
   align-items: flex-start;
   margin-top: var(--space-2);
-  color: var(--color-text);
+  color: var(--terminal-text-command);
+  font-weight: var(--weight-semibold);
 }
 
 .outputLine {
-  color: var(--color-text-muted);
+  color: var(--terminal-text-output);
   padding-left: 0;
-  margin-bottom: 2px;
+  margin-bottom: 3px;
   animation: fadeIn 0.2s ease;
 }
 
@@ -129,8 +130,8 @@
 }
 
 .promptText {
-  color: var(--color-amber);
-  font-weight: 600;
+  color: var(--terminal-prompt);
+  font-weight: 700;
   white-space: nowrap;
   user-select: none;
   flex-shrink: 0;
@@ -150,17 +151,18 @@
   outline: none;
   font-family: inherit;
   font-size: inherit;
-  color: var(--color-text);
-  caret-color: var(--color-amber);
+  color: var(--terminal-text-command);
+  caret-color: var(--terminal-cursor);
   padding: 0;
+  font-weight: var(--weight-medium);
 }
 
 .cursor {
   display: inline-block;
-  width: 7px;
-  height: 1.1em;
-  background: var(--color-amber);
-  opacity: 0.8;
+  width: 8px;
+  height: 1.15em;
+  background: var(--terminal-cursor);
+  opacity: 0.85;
   animation: blink 1.1s step-end infinite;
   vertical-align: middle;
   margin-left: 1px;
@@ -168,7 +170,7 @@
 }
 
 @keyframes blink {
-  0%, 100% { opacity: 0.8; }
+  0%, 100% { opacity: 0.85; }
   50%       { opacity: 0; }
 }
 
@@ -176,25 +178,29 @@
 .chips {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: var(--space-2);
-  padding: var(--space-3) var(--space-5) var(--space-4);
-  border-top: 1px solid var(--color-border);
-  background: var(--color-bg-alt);
+  padding: var(--space-3) var(--space-6) var(--space-4);
+  border-top: 1px solid var(--terminal-border-inner);
+  background: var(--terminal-chips-bg);
 }
 
 .chip {
   font-family: 'Fira Code', 'Cascadia Code', monospace;
   font-size: var(--text-xs);
-  padding: 4px 12px;
+  font-weight: var(--weight-medium);
+  padding: 5px 14px;
   border-radius: var(--radius-full);
-  border: 1px solid rgba(57, 66, 198, 0.2);
-  background: rgba(57, 66, 198, 0.06);
-  color: var(--color-amber);
+  border: 1px solid var(--terminal-chip-border);
+  background: var(--terminal-chip-bg);
+  color: var(--terminal-chip-text);
   cursor: pointer;
   transition: all 0.2s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
 }
 
 .chip:hover {
-  background: rgba(57, 66, 198, 0.15);
-  border-color: var(--color-amber);
+  background: var(--terminal-chip-hover-bg);
+  border-color: var(--terminal-prompt);
+  transform: translateY(-1px);
 }

@@ -6,15 +6,15 @@ import { LiquidButton } from './ui/Buttons';
 import styles from './Hero.module.css';
 
 /* Floating particle data */
-const PARTICLE_COUNT = 18;
+const PARTICLE_COUNT = 24;
 const particles = Array.from({ length: PARTICLE_COUNT }, (_, i) => ({
   id: i,
-  size:  Math.random() * 3 + 1.5,
+  size:  Math.random() * 3.5 + 2.5,
   x:     Math.random() * 100,
-  delay: Math.random() * 15,
+  delay: Math.random() * 12,
   dur:   Math.random() * 12 + 10,
-  color: i % 3 === 0 ? '#3942c6' : i % 3 === 1 ? '#5978c3' : '#594245',
-  opacity: Math.random() * 0.4 + 0.2,
+  color: i % 3 === 0 ? '#3942c6' : i % 3 === 1 ? '#5978c3' : '#8B5CF6',
+  opacity: Math.random() * 0.35 + 0.45,
 }));
 
 const container = {
@@ -95,7 +95,7 @@ export default function Hero() {
       >
         <p className={styles.floatingCardLabel}>Status</p>
         <p className={styles.floatingCardValue} style={{ fontSize: '1.1rem' }}>Open to Work</p>
-        <p className={styles.floatingCardSub}>Full-time & Internship</p>
+        <p className={styles.floatingCardSub}>Full-time, Internship & Freelance</p>
       </motion.div>
 
       {/* ── Main content ── */}
@@ -105,12 +105,6 @@ export default function Hero() {
         initial="hidden"
         animate="visible"
       >
-        {/* Badge */}
-        <motion.div className={styles.badge} variants={item}>
-          <span className={styles.badgeDot} />
-          Available for opportunities
-        </motion.div>
-
         {/* Name */}
         <motion.h1 className={styles.name} variants={item}>
           {personalInfo.name.split(' ')[0]}{' '}
@@ -124,12 +118,18 @@ export default function Hero() {
 
         {/* CTAs */}
         <motion.div className={styles.ctaRow} variants={item}>
-          <LiquidButton variant="primary" size="xl" onClick={scrollTo('projects')}>
+          <LiquidButton
+            variant="primary"
+            size="xl"
+            className={styles.ctaBtn}
+            onClick={scrollTo('projects')}
+          >
             See My Work ↓
           </LiquidButton>
           <LiquidButton
+            variant="outline"
             size="xl"
-            className="text-[var(--color-text)] font-semibold"
+            className={styles.ctaBtn}
             onClick={scrollTo('contact')}
           >
             Get In Touch

@@ -96,38 +96,38 @@ export function LiquidButton({
       className={cn(
         "relative",
         liquidbuttonVariants({ variant, size, className }),
-        isPrimary ? "font-bold hover:scale-[1.02] active:scale-[0.98]" : "hover:scale-[1.02] active:scale-[0.98]"
+        isPrimary ? "font-bold hover:scale-[1.02] active:scale-[0.98]" : "font-semibold hover:scale-[1.02] active:scale-[0.98]"
       )}
-      style={{ color: isPrimary ? "var(--color-text-inverse)" : "var(--color-text)", ...props.style }}
+      style={{
+        color: isPrimary ? "var(--color-primary-foreground)" : "var(--color-btn-secondary-text)",
+        ...props.style
+      }}
       {...props}
     >
       {/* Base Layer */}
       <div className={cn(
-        "absolute inset-0 z-0 rounded-full backdrop-blur-2xl transition-all duration-500",
+        "absolute inset-0 z-0 rounded-full backdrop-blur-2xl transition-all duration-300",
         isPrimary 
           ? "bg-[var(--color-primary)] hover:brightness-110"
-          : "bg-[var(--color-surface-elevated)] hover:bg-[var(--color-surface-hover)]"
+          : "bg-[var(--color-btn-secondary-bg)] hover:bg-[var(--color-btn-secondary-hover)]"
       )} />
       
       {/* Border & Glow */}
       <div className={cn(
-        "absolute inset-0 z-0 rounded-full border transition-all duration-500",
+        "absolute inset-0 z-0 rounded-full border transition-all duration-300",
         isPrimary
-          ? "border-[var(--color-border)] shadow-[var(--shadow-glow-blue)]"
-          : "border-[var(--color-border)] hover:border-[var(--color-border-hover)] shadow-[var(--shadow-float)]"
+          ? "border-transparent shadow-[var(--shadow-glow-blue)]"
+          : "border-[var(--color-btn-secondary-border)] hover:border-[var(--color-primary)] shadow-[var(--shadow-sm)]"
       )} />
       
       {/* Top reflection highlight */}
       <div className={cn(
-        "absolute inset-0 z-0 rounded-full bg-gradient-to-b from-white/20 to-transparent pointer-events-none transition-all duration-500",
-        isPrimary ? "opacity-40 group-hover:opacity-60" : "opacity-10 group-hover:opacity-20"
+        "absolute inset-0 z-0 rounded-full bg-gradient-to-b from-white/20 to-transparent pointer-events-none transition-all duration-300",
+        isPrimary ? "opacity-30 group-hover:opacity-50" : "opacity-10 group-hover:opacity-25"
       )} />
 
       {/* Content */}
-      <div className={cn(
-        "relative z-10 flex items-center justify-center drop-shadow-sm",
-        isPrimary && "drop-shadow-none"
-      )}>
+      <div className="relative z-10 flex items-center justify-center">
         {children}
       </div>
     </Comp>

@@ -10,6 +10,7 @@ Available commands:
   about       — Who is Giridhar?
   skills      — Tech stack overview
   projects    — List all projects
+  resume      — Download my resume
   contact     — How to reach me
   social      — Social media links
   clear       — Clear the terminal
@@ -67,6 +68,14 @@ Social Links:
   Twitter  → ${personalInfo.socials.twitter === '#' ? '(coming soon)' : personalInfo.socials.twitter}
 `.trim(),
 
+  resume: () => {
+    if (personalInfo.resume) {
+      window.open(personalInfo.resume, '_blank');
+      return 'Opening resume download in a new tab...';
+    }
+    return 'Resume link not configured.';
+  },
+
   clear: () => null, // handled specially
 
   help: () => HELP_TEXT,
@@ -90,7 +99,7 @@ export default function Terminal() {
   const [history, setHistory] = useState([]);
   const [historyIndex, setHistoryIndex] = useState(-1);
   const [isOpen, setIsOpen] = useState(false);
-  const bottomRef = useRef(null);
+  const bodyRef = useRef(null);
   const inputRef = useRef(null);
 
   useEffect(() => {
@@ -100,7 +109,12 @@ export default function Terminal() {
   }, [isOpen]);
 
   useEffect(() => {
-    bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
+    if (bodyRef.current) {
+      bodyRef.current.scrollTo({
+        top: bodyRef.current.scrollHeight,
+        behavior: 'smooth',
+      });
+    }
   }, [lines]);
 
   const run = useCallback((raw) => {
@@ -134,6 +148,7 @@ export default function Terminal() {
 
   const handleKeyDown = (e) => {
     if (e.key === 'Enter') {
+      e.preventDefault();
       run(input);
       setInput('');
     } else if (e.key === 'ArrowUp') {
@@ -190,7 +205,7 @@ export default function Terminal() {
           </div>
 
           {/* Output */}
-          <div className={styles.body}>
+          <div ref={bodyRef} className={styles.body}>
             {lines.map((line, i) => (
               <div key={i} className={line.type === 'command' ? styles.commandLine : styles.outputLine}>
                 {line.type === 'command' && (
@@ -215,12 +230,11 @@ export default function Terminal() {
               />
               <span className={styles.cursor} />
             </div>
-            <div ref={bottomRef} />
           </div>
 
           {/* Quick command chips */}
           <div className={styles.chips}>
-            {['about', 'skills', 'projects', 'contact'].map(cmd => (
+            {['about', 'skills', 'projects', 'resume', 'contact'].map(cmd => (
               <button
                 key={cmd}
                 className={styles.chip}

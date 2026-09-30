@@ -64,7 +64,7 @@ export default function About() {
 
             {/* Portrait */}
             <div className={styles.glassPortrait}>
-              <span className={styles.portraitBadge}>🚀 Open to Work</span>
+              <span className={styles.portraitBadge}>🚀 Open to Work & Freelance</span>
             </div>
           </div>
         </motion.div>

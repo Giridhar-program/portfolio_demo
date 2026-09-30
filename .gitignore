@@ -22,3 +22,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Temporary test & scratch artifacts
+temp_chrome_profile/
+scratch*
+test_hero*

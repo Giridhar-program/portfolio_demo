@@ -30,7 +30,7 @@ function ProjectMockup({ color, title, category }) {
       <rect x="12" y="56" width="140" height="5" rx="2.5" fill="#ffffff22" />
       <rect x="12" y="66" width="110" height="5" rx="2.5" fill="#ffffff15" />
       {/* Bar chart (for AI/ML and fullstack) */}
-      {category !== 'creative' && bars.map((h, i) => (
+      {category !== 'creative' && category !== 'systems' && bars.map((h, i) => (
         <rect
           key={i}
           x={12 + i * 28}
@@ -41,6 +41,19 @@ function ProjectMockup({ color, title, category }) {
           fill={i % 2 === 0 ? color + 'CC' : color + '55'}
         />
       ))}
+      {/* Columnar tabular / memory blocks for systems category */}
+      {category === 'systems' && (
+        <g opacity="0.85">
+          {[0, 1, 2, 3].map(col => (
+            <g key={col}>
+              <rect x={14 + col * 64} y={90} width="58" height="14" rx="2" fill={color + '60'} />
+              {[0, 1, 2].map(row => (
+                <rect key={row} x={14 + col * 64} y={108 + row * 13} width="58" height="9" rx="2" fill={row % 2 === 0 ? color + '30' : color + '15'} />
+              ))}
+            </g>
+          ))}
+        </g>
+      )}
       {/* 3D grid lines for creative category */}
       {category === 'creative' && (
         <g opacity="0.6">
@@ -94,7 +107,13 @@ function ProjectCard({ project }) {
           className={styles.categoryBadge}
           style={{ color: project.color, borderColor: project.color + '40', background: project.color + '12' }}
         >
-          {project.category === 'aiml' ? 'AI / ML' : project.category === 'fullstack' ? 'Full Stack' : '3D / Creative'}
+          {project.category === 'aiml'
+            ? 'AI / ML'
+            : project.category === 'fullstack'
+            ? 'Full Stack'
+            : project.category === 'systems'
+            ? 'Systems / C++'
+            : '3D / Creative'}
         </span>
 
         <h3 className={styles.cardTitle}>{project.title}</h3>

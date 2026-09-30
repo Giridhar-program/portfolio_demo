@@ -82,8 +82,8 @@
 }
 
 .cardAchievement {
-  background: linear-gradient(135deg, rgba(57, 66, 198, 0.08), rgba(10, 10, 15, 0));
-  border-color: rgba(57, 66, 198, 0.2);
+  background: linear-gradient(135deg, rgba(57, 66, 198, 0.08), var(--color-surface));
+  border-color: rgba(57, 66, 198, 0.25);
 }
 
 .cardGlow {
@@ -115,15 +115,15 @@
   padding: 3px 10px;
   border-radius: var(--radius-full);
   background: rgba(57, 66, 198, 0.15);
-  color: #3942c6;
+  color: var(--color-primary);
   border: 1px solid rgba(57, 66, 198, 0.3);
 }
 
 .cardYear {
   font-size: var(--text-xs);
   font-weight: var(--weight-semibold);
-  color: var(--color-text-on-surface);
-  opacity: 0.7;
+  color: var(--color-text-muted);
+  opacity: 0.9;
   letter-spacing: 0.05em;
   margin-left: auto;
 }
@@ -139,18 +139,34 @@
 .cardIssuer {
   font-size: var(--text-xs);
   font-weight: var(--weight-medium);
-  color: var(--color-text-on-surface);
-  opacity: 0.6;
+  color: var(--color-text-secondary);
+  opacity: 0.9;
   letter-spacing: 0.03em;
 }
 
 .cardDesc {
   font-size: var(--text-sm);
-  color: var(--color-text-on-surface);
-  opacity: 0.8;
+  color: var(--color-text-secondary);
   line-height: 1.5;
   margin-top: var(--space-1);
   flex: 1;
+}
+
+.cardAction {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: var(--text-xs);
+  font-weight: var(--weight-semibold);
+  color: var(--card-color, var(--color-primary));
+  margin-top: var(--space-3);
+  opacity: 0.85;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.card:hover .cardAction {
+  opacity: 1;
+  transform: translateX(3px);
 }
 
 .accentBar {
@@ -176,6 +192,7 @@
   background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-md);
 }
 
 .statItem {
@@ -198,8 +215,8 @@
 
 .statLabel {
   font-size: var(--text-sm);
-  color: var(--color-text-on-surface);
-  opacity: 0.8;
+  color: var(--color-text-secondary);
+  opacity: 0.95;
   letter-spacing: 0.03em;
 }
 
